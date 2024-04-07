@@ -1,0 +1,29 @@
+@use '../../styles/partials/mixins' as *;
+@use '../../styles/partials/variables' as *;
+@use '../../styles/partials/typography';
+
+.header{
+    display: flex;
+    justify-content: space-between;
+    padding: 2rem;
+    &__sidebar{
+        & ul{
+            list-style: none;
+        }
+    }
+    &__title{
+        color: brown;
+    }
+    &__profile{
+        & button{
+            width: 7rem;
+            height: 3rem;
+            border: none;
+            background-color: brown;
+            color: lightgoldenrodyellow;
+            &:hover{
+                background-color: rgb(197, 85, 85);
+            }
+        }
+    }
+}
