@@ -6,6 +6,7 @@
     display: flex;
     justify-content: space-between;
     padding: 2rem;
+    align-items: center;
     &__sidebar{
         & ul{
             list-style: none;
@@ -13,14 +14,15 @@
     }
     &__title{
         color: brown;
+        text-align: center;
     }
-    &__profile{
+    &__profile, &__cred{
         & button{
-            width: 7rem;
+            width: 4rem;
             height: 3rem;
             border: none;
             background-color: brown;
-            color: lightgoldenrodyellow;
+            color: #fafad2;
             &:hover{
                 background-color: rgb(197, 85, 85);
             }

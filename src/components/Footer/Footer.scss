@@ -1,0 +1,14 @@
+@use '../../styles/partials/mixins' as *;
+@use '../../styles/partials/variables' as *;
+@use '../../styles/partials/typography';
+
+.footer{
+    margin-top: auto;
+    display: flex;
+    justify-content: center;
+    background-color: greenyellow;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}

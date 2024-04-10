@@ -1,0 +1,31 @@
+@use '../../styles/partials/mixins' as *;
+@use '../../styles/partials/variables' as *;
+@use '../../styles/partials/typography';
+
+.nav{
+    position: fixed;
+    background-color: $bg-primary;
+    transition: width 600ms ease;
+    overflow: scroll;
+    bottom: 0;
+    width: 100vw;
+    height: 5rem;
+    &-bar{
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        align-items: center;
+        height: 100%;
+    }
+    &__item{
+        width: 100%;
+        &:last-child{
+            margin-top: auto;
+        }
+    }
+    &__link{
+        display: flex;
+        align-items: center;
+    }
+}
