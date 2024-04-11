@@ -2,14 +2,49 @@
 @use '../../styles/partials/variables' as *;
 @use '../../styles/partials/typography';
 
+
+.fa-primary {
+    color: #ff7eee;
+}
+  
+.fa-secondary {
+    color: #df49a6;
+}
+  
+.fa-primary,
+.fa-secondary {
+    transition: var(--transition-speed);
+}
+
+.theme-icon, #themeButton{
+    display: none;
+}
+
 .nav{
     position: fixed;
     background-color: $bg-primary;
     transition: width 600ms ease;
-    overflow: scroll;
+    overflow: hidden;
     bottom: 0;
     width: 100vw;
     height: 5rem;
+    @include tablet {
+        top: 0;
+        width: 5rem;
+        height: 100vh;
+        &:hover{
+            width: 16rem;
+            & .nav__link-text{
+                display: inline;
+            }
+            & .nav__logo svg{
+                margin-left: 11rem;
+            }
+            & .nav__logo-text{
+                left: 0;
+            }
+        }
+    }
     &-bar{
         list-style: none;
         padding: 0;
@@ -17,6 +52,9 @@
         display: flex;
         align-items: center;
         height: 100%;
+        @include tablet {
+            flex-direction: column;
+        }
     }
     &__item{
         width: 100%;
@@ -26,6 +64,96 @@
     }
     &__link{
         display: flex;
-        align-items: center;
+        justify-content: center;
+        height: 5rem;
+        color: $text-primary;
+        text-decoration: none;
+        filter: grayscale(100%) opacity(0.7);
+        transition: $transition-speed;
+        &:hover{
+            filter: grayscale(0%) opacity(1);
+            background: $bg-secondary;
+            color: $text-secondary;
+        }
+        &-text{
+            display: none;
+            margin-left: 1rem;
+        }
+        & svg{
+            width: 2rem;
+            min-width: 2rem;
+            margin: 0 1.5rem;
+        }
+        @include tablet{
+            align-items: center;
+        }
+
+    }
+    &__logo{
+        display: none;
+        font-weight: bold;
+        text-transform: uppercase;
+        margin-bottom: 1rem;
+        text-align: center;
+        color: $text-secondary;
+        background: $bg-secondary;
+        font-size: 1.5rem;
+        letter-spacing: 0.3ch;
+        width: 100%;
+        & svg{
+            transform: rotate(0deg);
+            transition: $transition-speed;
+            &:hover{
+                transform: rotate(-180deg);
+            }
+        }
+        &-text{
+            position: absolute;
+            left: -999px;
+            transition: $transition-speed;
+            display: inline;
+            font-size: 1rem;
+            width: 70%;
+        }
+        @include tablet{
+            display: block;
+        }
     }
 }
+
+// .dark {
+//     --text-primary: #b6b6b6;
+//     --text-secondary: #ececec;
+//     --bg-primary: #23232e;
+//     --bg-secondary: #141418;
+//   }
+  
+//   .light {
+//     --text-primary: #1f1f1f;
+//     --text-secondary: #000000;
+//     --bg-primary: #ffffff;
+//     --bg-secondary: #e4e4e4;
+//   }
+  
+//   .solar {
+//     --text-primary: #576e75;
+//     --text-secondary: #35535c;
+//     --bg-primary: #fdf6e3;
+//     --bg-secondary: #f5e5b8;
+//   }
+  
+//   .theme-icon {
+//     display: none;
+//   }
+  
+//   .dark #darkIcon {
+//     display: block;
+//   }
+  
+//   .light #lightIcon {
+//     display: block;
+//   }
+  
+//   .solar #solarIcon {
+//     display: block;
+//   }

@@ -59,7 +59,7 @@ export default function Nav(){
                         ></path>
                         </g>
                     </svg>
-                    <span className="nav__link-text">Cats</span>
+                    <span className="nav__link-text">Home</span>
                     </a>
                 </li>
 
@@ -88,7 +88,7 @@ export default function Nav(){
                         ></path>
                         </g>
                     </svg>
-                    <span className="nav__link-text">Aliens</span>
+                    <span className="nav__link-text">Leagues</span>
                     </a>
                 </li>
 
@@ -117,12 +117,12 @@ export default function Nav(){
                         ></path>
                         </g>
                     </svg>
-                    <span className="link-text">Space</span>
+                    <span className="nav__link-text">Teams</span>
                     </a>
                 </li>
 
-                <li className="nav-item">
-                    <a href="#" className="nav-link">
+                <li className="nav__item">
+                    <a href="#" className="nav__link">
                     <svg
                         aria-hidden="true"
                         focusable="false"
@@ -146,7 +146,7 @@ export default function Nav(){
                         ></path>
                         </g>
                     </svg>
-                    <span className="nav__link-text">Shuttle</span>
+                    <span className="nav__link-text">Players</span> 
                     </a>
                 </li>
 
