@@ -1,6 +1,7 @@
 import "./Leagues.scss";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 export default function Leagues() {
   const leaguesURL = process.env.REACT_APP_LEAGUES_URL;
@@ -11,14 +12,15 @@ export default function Leagues() {
   const fetchLeagues = async () => {
     try {
       const res = await axios.get(leaguesURL);
-      console.log(res.data);
       setLeagues(res.data);
     } catch (e) {
       console.error(e);
     }
   };
 
-  const manageLeague = () => {};
+  const manageLeague = () => {
+
+  };
 
   useEffect(() => {
     fetchLeagues();
@@ -33,20 +35,20 @@ export default function Leagues() {
             {leagues.map((league) => {
               return (
                 <li key={league.id} className="league-table__item">
-                  <span
-                    onClick={() => manageLeague(league.id)}
+                  <Link
+                    to={`/leagues/${league.id}`}
                     className="league-table__item-name"
                   >
                     {league.league_name}
-                  </span>
+                  </Link>
                   <button className="league-table__item-button">...</button>
                 </li>
               );
             })}
           </ul>
-          <button className="league-table__button league-table__button--add">
-            ADD NEW LEAGUE
-          </button>
+          <Link to={"/leagues/add"} className="league-table__button league-table__button--add">
+            ADD A NEW LEAGUE
+          </Link>
         </section>
 
         {/* <section className="league-table__section league-table__section--tournaments">

@@ -19,6 +19,10 @@
     &__title{
         color: brown;
         text-align: center;
+        & a {
+            text-decoration: none;
+            color: inherit;
+        }
     }
     &__profile, &__cred{
         & button{
