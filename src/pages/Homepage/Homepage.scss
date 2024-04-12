@@ -2,7 +2,7 @@
 @use '../../styles/partials/variables' as *;
 @use '../../styles/partials/typography';
 
-p{
+main{
     @include tablet{
         margin-left: 5rem;
     }

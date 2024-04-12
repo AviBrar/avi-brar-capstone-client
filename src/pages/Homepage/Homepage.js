@@ -1,10 +1,10 @@
-import Leagues from '../../components/Leagues/Leagues';
-import './Homepage.scss';
+import Leagues from "../../components/Leagues/Leagues";
+import "./Homepage.scss";
 
 export default function Homepage() {
-    return(
-        <>
-            <Leagues />
-        </>
-    )
+  return (
+    <main>
+      <Leagues />
+    </main>
+  );
 }
