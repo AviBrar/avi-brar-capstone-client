@@ -24,15 +24,21 @@
             color: inherit;
         }
     }
-    &__profile, &__cred{
+    &__profile{
+        width: 4rem;
+        height: 3rem;
+    }
+    &__account{
         & button{
             width: 4rem;
             height: 3rem;
             border: none;
             background-color: brown;
+            border-radius: 10%;
             color: #fafad2;
             &:hover{
                 background-color: rgb(197, 85, 85);
+                cursor: pointer;
             }
         }
     }

@@ -5,6 +5,7 @@
 *{
   box-sizing: border-box;
   margin: 0;
+  font-family: 'Titillium Web';
 }
 
 html{
@@ -12,6 +13,7 @@ html{
 }
 
 body{
+  background-color: $bg-primary;
   min-height: 100%;
   display: flex;
   flex-direction: column;
@@ -23,5 +25,12 @@ body{
   }
   &::-webkit-scrollbar-thumb{
     background: #6649b8;
+  }
+}
+
+main{
+  margin: 0 0 5rem 0;
+  @include tablet{
+      margin: 0 0 0 5rem;
   }
 }
