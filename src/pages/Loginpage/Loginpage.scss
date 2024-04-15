@@ -4,8 +4,30 @@
 
 .login-page{
     display: flex;
+    flex-direction: column;
     width: 100%;
     justify-content: center;
     height: 100vh;
     align-items: center;
+    &__user{
+        margin: 1rem;
+        &-input{
+            padding: 0.25rem;
+            border-radius: 4px;
+        }
+    }
+    &__pass{
+        margin: 1rem;
+        &-input{
+            padding: 0.25rem;
+            border-radius: 4px;
+        }
+    }
+    & button{
+        background-color: $bg-element-primary;
+        color: $White;
+        border: none;
+        padding: 0.5rem 1rem;
+        cursor: pointer;
+    }
 }

@@ -12,13 +12,15 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    border-radius: 20px;
+    padding: 1rem;
     &__legend{
         display: flex;
         justify-content: space-evenly;
         list-style: none;
         padding: 0;
         & li{
-            padding: 0 2.25rem;
+            padding: 0 1.59rem;
         }
     }
     &__button {
@@ -34,13 +36,17 @@
           font-size: 0.75rem;
           
         }
-    
+        &-container{
+          display: flex;
+        }
+
         &--add {
           background-color: #000000;
           border-radius: 8px;
           text-decoration: none;
           color: white;
           font-weight: bold;
+          margin-right: 2rem;
           &:hover{
             background: #4d4d4d;
             color: $text-secondary;

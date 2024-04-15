@@ -29,7 +29,8 @@ export default function Leaguepage() {
         <>
         <Header />
         <Nav />
-            <main className="league">
+            <main>
+              <div className="league">
                 <ul className="league__legend">
                     <li>Pos</li>
                     <li>Team</li>
@@ -54,9 +55,15 @@ export default function Leaguepage() {
                         />
                     );
                  })}
-                <Link to={"/teams/add"} className="league__button league__button--add">
-                  ADD A NEW TEAM
-                </Link>
+                 <div className="league__button-container">
+                  <Link to={"/teams/add"} className="league__button league__button--add">
+                    ADD A NEW TEAM
+                  </Link>
+                  <Link to={"/teams/game"} className="league__button league__button--add">
+                    PLAY A GAME
+                  </Link>
+                  </div>
+                </div>
             </main>
         </>
     )
