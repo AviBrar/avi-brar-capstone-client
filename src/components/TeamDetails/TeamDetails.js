@@ -14,7 +14,7 @@ export default function TeamDetails({
             <section className='team-details'>
                 <h1>{team_name}</h1>
                 <div className='team-details__history'>
-                    <p>{team_description}</p>
+                    <p>Description: {team_description}</p>
                     <p>City: {city}</p>
                     <p>Country: {country}</p>
                     <p>Founding Year: {founding_year}</p>

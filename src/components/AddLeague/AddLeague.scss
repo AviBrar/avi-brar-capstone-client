@@ -1,0 +1,265 @@
+@use '../../styles/partials/mixins' as *;
+@use '../../styles/partials/variables' as *;
+@use '../../styles/partials/typography';
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.divider {
+    border-bottom: 1px solid $Cloud;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+}
+
+.dropdown {
+    -webkit-appearance: none;
+    appearance: none;
+
+}
+
+.lower {
+
+    @include tablet {
+
+    }
+}
+
+.hide {
+    display: none;
+}
+
+.new-league {
+    background-color: $White;
+    width: 90%;
+    margin: auto;
+    border-radius: 4px;
+    box-shadow: 0px 2px 5px 0px #13182c1a;
+    overflow: none;
+    display: flex;
+    flex-direction: column;
+
+    @include tablet {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    &__details {
+        display: flex;
+        flex-direction: column;
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+
+        @include tablet {
+            width: 49%;
+            border-right: 1px solid $Cloud;
+        }
+
+        @include tablet {
+            padding-left: 2rem;
+            padding-right: 2rem;
+        }
+
+        @include desktop {
+            padding-left: 2.5rem;
+            padding-right: 2.5rem;
+        }
+
+        &-header {
+            padding-top: 1rem;
+            padding-bottom: 1.5rem;
+
+            @include tablet {
+                padding-top: 1.5rem;
+                padding-bottom: 2rem;
+            }
+        }
+
+        &-info {
+            display: flex;
+            flex-direction: column;
+            padding-bottom: 1rem;
+
+            @include tablet {
+                padding-bottom: 1.5rem;
+            }
+
+            @include desktop {
+                padding-bottom: 2rem;
+            }
+        }
+
+        &-text {
+            height: 2.25rem;
+            border-radius: 20px;
+            border: 1px solid $Cloud;
+            padding-left: 1rem;
+        }
+
+        &-area {
+            height: 2.25rem;
+            border-radius: 20px;
+            border: 1px solid $Cloud;
+            padding-left: 1rem;
+        }
+        &-country {
+            height: 2.25rem;
+            border-radius: 20px;
+            border: 1px solid $Cloud;
+            padding-left: 1rem;
+        }
+    }
+
+    &__contact {
+        display: flex;
+        flex-direction: column;
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+
+        @include tablet {
+            width: 49%;
+        }
+
+        @include tablet {
+            padding-left: 2rem;
+            padding-right: 2rem;
+        }
+
+        @include desktop {
+            padding-left: 2.5rem;
+            padding-right: 2.5rem;
+        }
+
+        &-header {
+            padding-top: 1rem;
+            padding-bottom: 1.5rem;
+
+            @include tablet {
+                padding-top: 1.5rem;
+                padding-bottom: 2rem;
+            }
+        }
+
+        &-info {
+            display: flex;
+            flex-direction: column;
+            padding-bottom: 1rem;
+
+            &-row {
+                flex-direction: row;
+                width: 40%;
+
+                @include desktop {
+                    width: 20%;
+                }
+            }
+
+            @include tablet {
+                padding-bottom: 1.5rem;
+            }
+
+            @include desktop {
+                padding-bottom: 2rem;
+            }
+        }
+
+        &-admin {
+            height: 2.25rem;
+            border-radius: 20px;
+            border: 1px solid $Cloud;
+            padding-left: 1rem;
+        }
+
+        &-phone {
+            height: 2.25rem;
+            border-radius: 20px;
+            border: 1px solid $Cloud;
+            padding-left: 1rem;
+        }
+
+        &-email {
+            height: 2.25rem;
+            border-radius: 20px;
+            border: 1px solid $Cloud;
+            padding-left: 1rem;
+        }
+        
+        &-text {
+            height: 2.25rem;
+            border-radius: 20px;
+            border: 1px solid $Cloud;
+            padding-left: 1rem;
+        }
+    }
+
+    &__btns {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        padding: 1rem 0 1rem 0;
+        width: 100%;
+        background-color: rgba(247, 248, 249, 0.7);
+
+        @include tablet {
+            justify-content: end;
+            padding: 1.375rem 2rem 1.375rem 0;
+        }
+
+        @include desktop {
+            justify-content: end;
+            padding: 1.375rem 2.5rem 1.375rem 0;
+        }
+
+
+        &-cancel {
+            display: flex;
+            border: 1px solid $Cloud;
+            border-radius: 20px;
+            height: 2.25rem;
+            width: 8.75rem;
+            background-color: $White;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            color: $Slate;
+
+            @include tablet {
+                margin-right: 2rem;
+                height: 2.375rem;
+            }
+
+            @include desktop {
+                margin-right: 2.5rem;
+                height: 2.375rem;
+            }
+        }
+
+        &-cancel:hover {
+            border-color: $text-primary;
+        }
+
+        &-add {
+            display: flex;
+            border-radius: 20px;
+            height: 2.25rem;
+            width: 8.75rem;
+            border: none;
+            background-color: $bg-element-primary;
+            color: $White;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            &:hover{
+                background: $bg-element-secondary;
+                color: $text-secondary;
+                cursor: pointer;
+            }
+
+            @include tablet {
+                height: 2.375rem;
+            }
+        }
+    }
+}

@@ -1,8 +1,10 @@
 import "./Leaguepage.scss";
 import  axios  from "axios";
 import { useState, useEffect } from "react";
-import {useParams} from "react-router-dom";
+import {useParams, Link} from "react-router-dom";
 import TeamList from "../../components/TeamList/TeamList";
+import Header from "../../components/Header/Header";
+import Nav from "../../components/Nav/Nav";
 
 export default function Leaguepage() {
     const {id} = useParams();
@@ -25,17 +27,19 @@ export default function Leaguepage() {
   
     return(
         <>
-            <section className="league">
-                <div className="league__legend">
-                    <p>Pos</p>
-                    <h3>Team</h3>
-                    <p>wins</p>
-                    <p>draws</p>
-                    <p>losses</p>
-                    <p>GF</p>
-                    <p>GA</p>
-                    <p>Points</p>
-                </div>
+        <Header />
+        <Nav />
+            <main className="league">
+                <ul className="league__legend">
+                    <li>Pos</li>
+                    <li>Team</li>
+                    <li>wins</li>
+                    <li>draws</li>
+                    <li>losses</li>
+                    <li>GF</li>
+                    <li>GA</li>
+                    <li>Points</li>
+                </ul>
                 {teams.map((team) => {
                     return (
                         <TeamList
@@ -50,7 +54,10 @@ export default function Leaguepage() {
                         />
                     );
                  })}
-            </section>
+                <Link to={"/teams/add"} className="league__button league__button--add">
+                  ADD A NEW TEAM
+                </Link>
+            </main>
         </>
     )
 }

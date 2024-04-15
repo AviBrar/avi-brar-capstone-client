@@ -4,6 +4,8 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import TeamDetails from "../../components/TeamDetails/TeamDetails";
 import PlayerList from "../../components/PlayerList/PlayerList";
+import Header from "../../components/Header/Header";
+import Nav from "../../components/Nav/Nav";
 
 export default function Teampage() {
   const { id } = useParams();
@@ -37,6 +39,9 @@ export default function Teampage() {
 
   return (
     <>
+        <Header />
+        <Nav />
+    <main className="team-page">
       <TeamDetails
         id={team.id}
         league_id={team.league_id}
@@ -54,8 +59,8 @@ export default function Teampage() {
         draws={team.draws}
         losses={team.losses}
       />
-      <h2>Players</h2>
       <PlayerList players={players} />
+    </main>
     </>
   );
 }
