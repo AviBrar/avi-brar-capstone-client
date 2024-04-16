@@ -25,28 +25,32 @@ export default function Game() {
 
   useEffect(() => {
     const getHomeTeam = async () => {
-      if(team1 === "invalid"){return}
-        try {
-          const res = await axios.get(`${teamsURL}/${team1}`)
-          setHomeTeam(res.data)
-        } catch (e) {
-          console.error(e);
-        }
-    }
+      if (team1 === "invalid") {
+        return;
+      }
+      try {
+        const res = await axios.get(`${teamsURL}/${team1}`);
+        setHomeTeam(res.data);
+      } catch (e) {
+        console.error(e);
+      }
+    };
     getHomeTeam();
-  }, [team1])
+  }, [team1]);
   useEffect(() => {
     const getAwayTeam = async () => {
-      if(team2 === "invalid"){return}
-        try {
-          const res = await axios.get(`${teamsURL}/${team2}`)
-          setAwayTeam(res.data)
-        } catch (e) {
-          console.error(e);
-        }
-    }
+      if (team2 === "invalid") {
+        return;
+      }
+      try {
+        const res = await axios.get(`${teamsURL}/${team2}`);
+        setAwayTeam(res.data);
+      } catch (e) {
+        console.error(e);
+      }
+    };
     getAwayTeam();
-  }, [team2])
+  }, [team2]);
 
   const populateLeagues = () => {
     const parent = document.getElementById("gameLeague");
@@ -82,7 +86,7 @@ export default function Game() {
         setTeamList([]);
         return; // Prevents the API call if no valid league is selected
       }
-  
+
       try {
         const res = await axios.get(`${leaguesURL}/${league}/teams`);
         setTeamList(res.data);
@@ -95,32 +99,32 @@ export default function Game() {
     };
     getTeams();
   }, [league]); // Ensure this runs only when 'league' changes
-  
+
   // Populate team options when teamList updates
   useEffect(() => {
     const populateTeams = (parentElementId) => {
       const parent = document.getElementById(parentElementId);
       if (!parent) return;
-  
+
       parent.innerHTML = `<option value="invalid">Please select</option>`; // Clear existing options
       for (let i = 0; i < teamList.length; i++) {
         let opt = document.createElement("option");
         opt.innerHTML = teamList[i].team_name;
         opt.value = teamList[i].id;
         parent.appendChild(opt);
-      };
+      }
     };
     populateTeams("gameTeams1");
     populateTeams("gameTeams2");
   }, [teamList]); // Populate teams when 'teamList' changes
-  
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const wins = "1";
     const draws = "0";
     const losses = "1";
     const updateHomeTeam = async () => {
-      try{
+      try {
         await axios.put(`${teamsURL}/${team1}`, {
           league_id: league,
           team_name: homeTeam.team_name,
@@ -135,14 +139,14 @@ export default function Game() {
           goals_against: goals2,
           wins: wins,
           draws: draws,
-          losses: draws
+          losses: draws,
         });
       } catch (error) {
         console.error(error);
       }
     };
     const updateAwayTeam = async () => {
-      try{
+      try {
         await axios.put(`${teamsURL}/${team2}`, {
           league_id: league,
           team_name: awayTeam.team_name,
@@ -157,7 +161,7 @@ export default function Game() {
           goals_against: goals1,
           wins: draws,
           draws: draws,
-          losses: losses
+          losses: losses,
         });
       } catch (error) {
         console.error(error);
@@ -166,11 +170,12 @@ export default function Game() {
     updateHomeTeam();
     updateAwayTeam();
     navigate("/");
-  }
+  };
 
   return (
     <>
       <form className="game" onSubmit={handleSubmit}>
+        <h2>Select the league and the Teams!</h2>
         <div className="game__league">
           <div className="game__league-info">
             <label htmlFor="gameLeague">League</label>
@@ -213,27 +218,29 @@ export default function Game() {
           <div className="game__score">
             <div className="game__score-home">
               <label htmlFor="homeScore">Home: </label>
-              <input 
+              <input
                 name="homeScore"
                 id="homeScore"
                 type="text"
                 className="game__score-input"
-                onChange={(e) => setGoals1(e.target.value)} />
+                onChange={(e) => setGoals1(e.target.value)}
+              />
             </div>
             <div className="game__score-away">
               <label htmlFor="awayScore">Away: </label>
-              <input 
+              <input
                 name="awayScore"
                 id="awayScore"
                 type="text"
                 className="game__score-input"
-                onChange={(e) => setGoals2(e.target.value)} />
+                onChange={(e) => setGoals2(e.target.value)}
+              />
             </div>
           </div>
-          <div>
-            <button 
-              type="submit"
-              >Submit Score</button>
+          <div className="game__score-btn-container">
+            <button type="submit" className="game__score-btn">
+              Submit Score
+            </button>
           </div>
         </div>
       </form>
