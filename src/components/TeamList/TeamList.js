@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 export default function TeamList({ id, team_name, goals, goals_against, wins, draws, losses}){
 
-    const points = wins*3 + draws;
+    const points = wins*3;
 
     return(
         <>
