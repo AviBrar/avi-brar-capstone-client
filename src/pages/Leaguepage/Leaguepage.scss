@@ -16,11 +16,15 @@
     padding: 1rem;
     &__legend{
         display: flex;
-        justify-content: space-evenly;
+        // justify-content: space-evenly;
         list-style: none;
         padding: 0;
+        width: 650px;
         & li{
-            padding: 0 1.59rem;
+            width: 64px;
+        }
+        & li:nth-child(2){
+          width: 196px;
         }
     }
     &__button {
