@@ -4,10 +4,23 @@
 
 .team-list{
     display: flex;
-    width: 100%;
-    justify-content: space-evenly;
+    width: 650px;
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 1rem;
+    background-color: $bg-element-primary;
+    border-radius: 8px;
+    padding: 0.25rem;
+    color: $White;
     & a{
         text-decoration: none;
         color: inherit;
+        width: 196px;
+    }
+    & li{
+        width: 64px;
+    }
+    & li:nth-child(2){
+        width: 196px;
     }
 }
