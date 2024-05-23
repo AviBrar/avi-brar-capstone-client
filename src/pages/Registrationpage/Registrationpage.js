@@ -2,6 +2,7 @@ import "../Loginpage/Loginpage.scss";
 import { useNavigate, Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useState } from "react";
+import axios from "axios";
 
 function Registrationpage() {
   const navigate = useNavigate();
@@ -9,6 +10,7 @@ function Registrationpage() {
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
   const [errors, setErrors] = useState({});
+  const authURL = "http://localhost:8080/auth";
 
   function registrationValidation(name, userName, password) {
     let errors = {};
@@ -40,6 +42,26 @@ function Registrationpage() {
   const handleSubmit = (e) => {
     e.preventDefault();
     setErrors(registrationValidation(name, userName, password));
+    if (
+      errors.name === "" &&
+      errors.userName === "" &&
+      errors.password === ""
+    ) {
+      axios
+        .post(`${authURL}/register`, {
+          name: name,
+          username: userName,
+          password: password,
+        })
+        .then((response) => {
+          if (response.status === 200) {
+            navigate("/login");
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
   };
   const handleLogin = () => {
     navigate("/login");

@@ -3,6 +3,7 @@ import { useNavigate, Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useState } from "react";
 import LoginValidation from "../../components/Validation/Validation";
+import axios from "axios";
 
 export default function Loginpage() {
   const navigate = useNavigate();
@@ -13,6 +14,20 @@ export default function Loginpage() {
   const handleSubmit = (e) => {
     e.preventDefault();
     setErrors(LoginValidation(userName, password));
+    if (Object.keys(errors).length === 0) {
+      axios
+        .post("http://localhost:8080/auth/login", {
+          username: userName,
+          password: password,
+        })
+        .then((res) => {
+          localStorage.setItem("user", JSON.stringify(res.data));
+          navigate("/");
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
   };
   const handleRegistration = () => {
     navigate("/registration");
