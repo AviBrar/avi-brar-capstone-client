@@ -1,70 +1,195 @@
-# Getting Started with Create React App
+# League Maestro
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Overview
 
-## Available Scripts
+League manager for amatuer sports that will allow greater communication between players managers and the league as well with officiating. The overall goal is to increase the competitiveness of ameteur sports in any given area. Statistics being tracked and validated by officials.
 
-In the project directory, you can run:
+### Problem
 
-### `npm start`
+League managment applications are not in competition with any other supplier leading to higher than expected costs. Also the level of quality and communication is heavily lacking. I would like to change the fundamental way touranaments are organized and funded.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### User Profile
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+League managers will use my app alongside team managers and players. All user bases will have to be catered towards.
+-players
+-managers
+-league managers
+-officials
+-fans
 
-### `npm test`
+### Features
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Players - ability to check standings, upcoming games, confirm appearance, check position, managers notes, statistics
 
-### `npm run build`
+Managers - ability to check player stats, write notes to each player, schedule practices, communicate with the league manager
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+League Manager - ability to oversee all input and manipulate data.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Officials - ability to post match scores and statistics alongside notes for the league manager.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+For the fans - ability to play fantasy football with the registered players this will be a low priority feature
 
-### `npm run eject`
+## Implementation
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Tech Stack
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- React
+- TypeScript
+- MySQL
+- Express
+- Client libraries:
+  - react
+  - react-router
+  - axios
+  - chart.js
+  - leaflet for maps
+  - multiple.js
+  - moment.js
+  - Omniscient.js
+  - parsley for form validation
+  - popper.js for button menu's
+  - Ionic for mobile efficiency
+- Server libraries:
+- - SQL
+  - knex
+  - express
+  - bcrypt for password hashing
+  - node.js
+  - mocha.js for performance testing
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+#### Home Page
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+![](./src/assets/imgs/homePage.png)
 
-## Learn More
+#### Home Page - SideBar
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+![](./src/assets/imgs/sideBar.png)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+#### Account Page
 
-### Code Splitting
+![](./src/assets/imgs/leagues.png)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+#### Personnel Page
 
-### Analyzing the Bundle Size
+![](./src/assets/imgs/addLeague.png)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+#### Settings Page
 
-### Making a Progressive Web App
+![](./src/assets/imgs/addTeam.png)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+#### Home Page Nav
 
-### Advanced Configuration
+![](./src/assets/imgs/teamView.png)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+### Data
 
-### Deployment
+Four tables with foreign keys for league team and officials
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+### Endpoints
 
-### `npm run build` fails to minify
+**GET /teams**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Get standings, with the statistical info
+
+Response:
+
+```
+[
+    {
+        "id": 1,
+        "league_id": 3,
+        "team_name": "Jaguars",
+        "wins": 21,
+        "lost": 6,
+        "drew": 2,
+        "points": 65,
+        "goals": 98,
+        "goals_against": 44
+    },
+    ...
+]
+```
+
+**GET /leagues**
+
+- Get leagues, with the data on each league
+
+Response:
+
+```
+[
+    {
+        "id": 1,
+        "league_name": "East side premier league",
+        "number_of_teams": 15,
+        "number_of_players": 187,
+        "bank_account": "$23000",
+        "officials": [officals],
+        "teams": [teams],
+        "players": [players],
+        "managers": [managers]
+    },
+    ...
+]
+```
+
+### Auth
+
+- JWT auth
+  - Before adding auth, all API requests will be using seeded data from the premier league
+  - Added after core features have first been implemented
+  - Store JWT in localStorage, remove when a user logs out
+  - Add states for logged in showing different UI in places listed in mockups
+
+## Roadmap
+
+- Create client
+
+  - react project with routes and boilerplate pages
+
+- Create server
+
+  - express project with routing, with placeholder 200 responses
+
+- Create migrations
+
+- Create multiple leagues and populate them with teams at different parts of the season.
+
+- Create seeds with sample league data
+
+- Deploy client and server projects so all commits will be reflected in production
+
+- Feature: List leagues
+
+  - Implement list leagues page
+  - Create GET /leagues endpoint
+
+- Feature: List teams
+
+  - Implement list teams page
+  - Create GET /teams endpoint
+
+- Feature: Home page
+
+- Feature: Create account
+
+  - Implement register page + form
+  - Create POST /users/register endpoint
+
+- Feature: Login
+
+  - Implement login page + form
+  - Create POST /users/login endpoint
+
+- Feature: Implement JWT tokens
+
+  - Server: Update expected requests / responses on protected endpoints
+  - Client: Store JWT in local storage, include JWT on axios calls
+
+- Bug fixes
+
+## Nice-to-haves
+
+- Practice meet up maps and player training schedules with.
+- Structured data on players for future AI scouting uses
+- Tournament creation and creative funding schemes with local advertising opportunites.
